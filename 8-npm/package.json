@@ -1,0 +1,13 @@
+{
+  "name": "8-npm",
+  "version": "1.0.0",
+  "description": "Belajar Nodejs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "Hello": "ls",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Biagii",
+  "license": "ISC"
+}
