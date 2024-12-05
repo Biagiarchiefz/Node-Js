@@ -10,6 +10,6 @@ import chalk from 'chalk';
 
 
 
-console.log(chalk.red('Hello Biagi'))
+console.log(chalk.red('Hello Biagi Archie '))
 console.log(chalk.bgBlue.black.bold('Hello world!'));
 
