@@ -1,5 +1,8 @@
 const { rejects } = require('assert');
 const fs = require('fs');
+// const chalk = require (' chalk ')
+// import chalk from 'chalk';
+const validator = require('validator')
 const { resolve } = require('path');
 
 
@@ -35,12 +38,12 @@ const { resolve } = require('path');
 
 // Readline ( membaca input dri user melalui terminal dan memberikan respon )
 
-const readline = require('readline');
-// const { json } = require('stream/consumers');
-const rl = readline.createInterface({
-  input : process.stdin,
-  output:process.stdout,
-})
+// const readline = require('readline');
+// // const { json } = require('stream/consumers');
+// const rl = readline.createInterface({
+//   input : process.stdin,
+//   output:process.stdout,
+// })
 
 
 // membuat foldert data jika belum ada
@@ -58,19 +61,43 @@ if (!fs.existsSync(filePath) ) {          // jika filePath tidak ada kalau true 
 
 
 // arrow function ini mengembalikan promise
-const tulisPertanyaan = ( pertanyaaan ) => {
-  return new Promise( (resolve, reject) => {           // resolve: Fungsi untuk mengembalikan hasil jika operasi berhasil.
-    rl.question(pertanyaaan, (nama) => {      // reject: Fungsi untuk mengembalikan error jika operasi gagal.
-      resolve(nama);
-    })
-  })
-}
+// const tulisPertanyaan = ( pertanyaaan ) => {
+//   return new Promise( (resolve, reject) => {           // resolve: Fungsi untuk mengembalikan hasil jika operasi berhasil.
+//     rl.question(pertanyaaan, (nama) => {      // reject: Fungsi untuk mengembalikan error jika operasi gagal.
+//       resolve(nama);
+//     })
+//   })
+// }
 
 const simpanContact = ( nama, email, noHp) => {
+  
   const contact = { nama, email, noHp }
 
   const file = fs.readFileSync ('data/contact.json', 'utf-8')
-    const contacts = JSON.parse(file)    // untuk merubah string menjadi JSON menggunakan parse
+  const contacts = JSON.parse(file)    // untuk merubah string menjadi JSON menggunakan parse
+
+  // cek duplikat
+  const duplikat = contacts.find((contact) => contact.nama === nama );
+  if(duplikat) {
+    console.log('contact sudah terdaftar, masukkan nama lain')
+    return false
+  }
+
+  // cek email 
+  if (email) {       // jika email ada isinya
+    if (!validator.isEmail(email)) {
+      console.log('email tidak valid')
+      return false
+    }
+  }
+
+
+  // cek nomor hp
+  if (!validator.isMobilePhone(noHp, 'id-ID')) {
+    console.log('nomor hp tidak valid')
+    return false
+  }
+
     
 
     contacts.push(contact)       // contacts yang awalnya array kosong di masukan nilai contact yang isi nama, no
@@ -79,11 +106,9 @@ const simpanContact = ( nama, email, noHp) => {
 
     console.log('Terimkakasih telah memasukan data')
 
-    rl.close();
 }
 
 
 module.exports = {
-  tulisPertanyaan,
   simpanContact
 }
