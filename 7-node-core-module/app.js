@@ -1,20 +1,85 @@
+const yargs = require("yargs");
+const contacts = require("./contacts");
+
+// console.log(yargs.argv)nod
+
+yargs.command({  // ketikah perintah add di jalankan jalankan perintah di builder
+  command : 'add',
+  describe: 'Menambahkan contact baru',
+  builder: {
+
+    nama: {
+      describe: 'Nama Lengkap',
+      demandOption: true,
+      type: 'string',
+    },
+    email: {
+      describe: 'Email',
+      demandOption: false,
+      type: 'string'
+    },
+    noHp: {
+      describe: 'Nomor Handphone',
+      demandOption: true,
+      type: 'string'
+
+    },
+  },
+
+  handler (argv) {
+    contacts.simpanContact(argv.nama, argv.email, argv.noHp)
+    },
+
+})
+
+yargs.parse();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // fungsi di bawah ini untuk menulis data ke dalam file
 // Core Module
 // 1. File System
 
-const contacts = require('./contacts')
 
 
-const main = async() => {
-  const nama = await contacts.tulisPertanyaan('Masukkan nama anda : ')
-  const email = await contacts.tulisPertanyaan('Masukkan email anda : ')
-  const noHp = await contacts.tulisPertanyaan('Masukkan nomor handphone anda : ')
 
- contacts.simpanContact(nama, email, noHp)
-}
+// console.log(process.argv)
 
-main()
+
+
+// const contacts = require('./contacts')
+
+
+// const main = async() => {
+//   const nama = await contacts.tulisPertanyaan('Masukkan nama anda : ')
+//   const email = await contacts.tulisPertanyaan('Masukkan email anda : ')
+//   const noHp = await contacts.tulisPertanyaan('Masukkan nomor handphone anda : ')
+
+//  contacts.simpanContact(nama, email, noHp)
+// }
+
+// main()
 
 
 
