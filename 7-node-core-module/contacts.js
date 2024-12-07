@@ -112,5 +112,3 @@ const simpanContact = ( nama, email, noHp) => {
 module.exports = {
   simpanContact
 }
-
-jij

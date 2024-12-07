@@ -1,5 +1,5 @@
 const yargs = require("yargs");
-const contacts = require("./contacts");
+const contacts = require('./contacts')
 
 // console.log(yargs.argv)nod
 
@@ -30,7 +30,11 @@ yargs.command({  // ketikah perintah add di jalankan jalankan perintah di builde
     contacts.simpanContact(argv.nama, argv.email, argv.noHp)
     },
 
-})
+}).demandCommand();
+
+
+// menampilkan daftar semua nama dan noHp contact
+
 
 yargs.parse();
 
