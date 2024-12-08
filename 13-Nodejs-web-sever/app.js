@@ -21,17 +21,30 @@ res.writeHead(200, {
 
    const url = req.url;
 
-   if ( url === '/about'){
-    renderHTML('./about.html', res)
+  //  if ( url === '/about'){
+  //   renderHTML('./about.html', res)
 
-   } else if ( url === '/contact') {
-    res.write('ini halaman contact')
-    res.end()
+  //  } else if ( url === '/contact') {
+  //   res.write('ini halaman contact')
+  //   res.end()
 
-   } else {
-    //  res.write('Halaman ini tidak ditemukan ');
-    renderHTML('./index.html', res)
+  //  } else {
+  //   //  res.write('Halaman ini tidak ditemukan ');
+  //   renderHTML('./index.html', res)
+  // }
+
+  switch (url) {
+    case '/about':
+      renderHTML('./about.html', res)
+      break;
+    case '/contact':
+      renderHTML('./contact.html', res)
+      break;
+    default :
+      renderHTML('./index.html', res)
+      break;
   }
+
 })
 
 
