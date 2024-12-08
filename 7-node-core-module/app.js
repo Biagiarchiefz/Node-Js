@@ -22,7 +22,6 @@ yargs.command({  // ketikah perintah add di jalankan jalankan perintah di builde
       describe: 'Nomor Handphone',
       demandOption: true,
       type: 'string'
-
     },
   },
 
@@ -34,6 +33,49 @@ yargs.command({  // ketikah perintah add di jalankan jalankan perintah di builde
 
 
 // menampilkan daftar semua nama dan noHp contact
+yargs.command({
+  command : 'list',
+  describe: 'Menampilkan contact baru',
+  handler() {
+    contacts.listContact()
+  }
+})
+
+
+yargs.command({
+  command : 'detail',
+  describe: 'Menampilkan detail contact baru berdasarkan nama',
+
+  builder: {
+    nama: {
+      describe: 'Nama Lengkap',
+      demandOption: true,
+      type: 'string',
+    },
+  },
+
+  handler (argv) {
+    contacts.detailContact(argv.nama)
+  }
+})
+
+// mehapus kontak berdasarkan nama
+yargs.command({
+  command : 'delete',
+  describe: 'Menghapus contact baru berdasarkan nama',
+
+  builder: {
+    nama: {
+      describe: 'Nama Lengkap',
+      demandOption: true,
+      type: 'string',
+    },
+  },
+
+  handler (argv) {
+    contacts.deleteContact(argv.nama)
+  }
+})
 
 
 yargs.parse();
