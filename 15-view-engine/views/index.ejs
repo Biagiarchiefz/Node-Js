@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+</head>
+<body>
+  <h3>Links</h3>
+  <ul>
+    <li>
+      <a href="/">home</a>
+    </li>
+    <li>
+      <a href="/about">About</a>
+    </li>
+    <li>
+      <a href="/contact">Contact</a>
+    </li>
+    <li>
+      <a href="/product">Product</a>
+    </li>
+  </ul>
+ 
+ 
+  <h1>Web server Node js</h1>
+  <h2>haloo <%= nama %> </h2>
+
+  <h4>Daftar Mahasiswa</h4>
+
+  <% if (mahasiswa.length < 1) { %>
+      <p>data mahasiswa masi kosong</p>
+  <% } %>
+
+  <% mahasiswa.forEach(mhs => { %>
+    
+    <ul>
+      <li>nama : <%= mhs.nama %> </li>
+      <li>email : <%= mhs.email %> </li>
+    </ul>
+
+  <% }) %>
+
+
+
+
+
+</body>
+</html>
