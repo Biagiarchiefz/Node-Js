@@ -1,0 +1,33 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Daftar contact</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nama</th>
+            <th scope="col">No Hp</th>
+            <th scope="col">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% contacts.forEach((contact, index) => { %>  
+            <tr>
+              <th scope="row"><%= index + 1 %></th>
+              <td><%= contact.nama%></td>
+              <td><%= contact.noHp%></td>
+              <td>
+                <a href="" class="btn-success badge text-decoration-none"><i class="bi bi-info-circle"></i> Detail</a>
+              </td>
+              </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+  
