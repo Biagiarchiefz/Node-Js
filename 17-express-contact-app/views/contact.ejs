@@ -12,13 +12,22 @@
           </tr>
         </thead>
         <tbody>
+          <% if (contacts.length === 0 ) { %>
+            <tr>
+              <td colspan="4" class="text-center">
+                <div class="alert alert-danger fw-bold" role="alert">
+                  Daftar kontak masi kosong
+              </td>
+              </tr>
+          <% } %>
+
           <% contacts.forEach((contact, index) => { %>  
             <tr>
               <th scope="row"><%= index + 1 %></th>
               <td><%= contact.nama%></td>
               <td><%= contact.noHp%></td>
               <td>
-                <a href="" class="btn-success badge text-decoration-none"><i class="bi bi-info-circle"></i> Detail</a>
+                <a href="/contact/<%= contact.nama %>" class="btn-success badge text-decoration-none"><i class="bi bi-info-circle"></i> Detail</a>
               </td>
               </tr>
           <% }) %>
