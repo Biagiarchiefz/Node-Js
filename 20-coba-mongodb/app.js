@@ -89,6 +89,8 @@ async function main() {
 
 main().catch(console.error);
 
+console.log('berhasil')
+
 
 
 
